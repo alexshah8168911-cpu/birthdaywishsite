@@ -1,0 +1,429 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    overflow: hidden;
+}
+
+.loveletter-container {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, hsl(138, 91%, 48%) 0%, #764ba2 25%, hsl(294, 86%, 49%) 50%, #f5576c 75%, #4facfe 100%);
+    background-size: 300% 300%;
+    animation: gradientShift 10s ease infinite, fadeIn 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+header {
+    margin-bottom: 2rem;
+    animation: slideDown 1.2s ease-out;
+}
+
+header h1 {
+    color: #8b4513;
+    font-size: 2.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-family: 'Georgia', serif;
+}
+
+.letter-content {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.letter-image {
+    animation: bounceIn 1.5s ease-out;
+    position: relative;
+    display: inline-block;
+}
+
+.letter-image img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid #ff69b4;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.letter-image::before {
+    content: '';
+    position: absolute;
+    top: -35px;
+    left: -35px;
+    right: -35px;
+    bottom: -35px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        #FFD700 0deg,
+        #FFA500 15deg,
+        #FFD700 30deg,
+        #FF8C00 45deg,
+        #FFD700 60deg,
+        #FFA500 75deg,
+        #FFD700 90deg,
+        #FF8C00 105deg,
+        #FFD700 120deg,
+        #FFA500 135deg,
+        #FFD700 150deg,
+        #FF8C00 165deg,
+        #FFD700 180deg,
+        #FFA500 195deg,
+        #FFD700 210deg,
+        #FF8C00 225deg,
+        #FFD700 240deg,
+        #FFA500 255deg,
+        #FFD700 270deg,
+        #FF8C00 285deg,
+        #FFD700 300deg,
+        #FFA500 315deg,
+        #FFD700 330deg,
+        #FF8C00 345deg,
+        #FFD700 360deg
+    );
+    animation: rotateGoldenBorder 4s linear infinite;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.letter-image::after {
+    content: '';
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    right: -25px;
+    bottom: -25px;
+    border-radius: 50%;
+    background: white;
+    z-index: 2;
+    box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Additional decorative border */
+.letter-image .decorative-border {
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    right: -40px;
+    bottom: -40px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FF8C00, #FFD700) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: subtract;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: subtract;
+    z-index: 0;
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+.letter-image img:hover {
+    transform: scale(1.1);
+}
+
+.letter-scroll {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+    border: 2px solid #ff69b4;
+    animation: unfold 1.8s ease-out;
+}
+
+.letter-text {
+    text-align: left;
+    line-height: 1.8;
+    color: #333;
+}
+
+.letter-greeting {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: #8b4513;
+}
+
+.letter-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-indent: 2rem;
+}
+
+.letter-signature {
+    text-align: right;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: #8b4513;
+}
+
+.letter-signature p {
+    margin-bottom: 0.5rem;
+    text-indent: 0;
+}
+
+.back-button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #ff69b4, #ffb6c1);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: slideUp 2s ease-out;
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Custom scrollbar */
+.letter-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.letter-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.letter-scroll::-webkit-scrollbar-thumb {
+    background: #ff69b4;
+    border-radius: 10px;
+}
+
+.letter-scroll::-webkit-scrollbar-thumb:hover {
+    background: #e55aa0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes unfold {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateGoldenBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* Floating hearts background */
+.heart-float {
+    position: absolute;
+    color: rgba(255, 105, 180, 0.3);
+    font-size: 20px;
+    animation: floatHeart 6s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .letter-scroll {
+        padding: 1.5rem;
+        max-height: 350px;
+    }
+    
+    .letter-text p {
+        font-size: 1rem;
+        text-indent: 1rem;
+    }
+    
+    .letter-greeting {
+        font-size: 1.1rem;
+    }
+    
+    .letter-signature {
+        font-size: 1rem;
+    }
+    
+    .letter-image img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .letter-image::before {
+        top: -30px;
+        left: -30px;
+        right: -30px;
+        bottom: -30px;
+    }
+    
+    .letter-image::after {
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+    }
+    
+    .letter-image .decorative-border {
+        top: -35px;
+        left: -35px;
+        right: -35px;
+        bottom: -35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loveletter-container {
+        padding: 1rem;
+    }
+    
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .letter-image img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .letter-image::before {
+        top: -25px;
+        left: -25px;
+        right: -25px;
+        bottom: -25px;
+    }
+    
+    .letter-image::after {
+        top: -15px;
+        left: -15px;
+        right: -15px;
+        bottom: -15px;
+    }
+    
+    .letter-image .decorative-border {
+        top: -30px;
+        left: -30px;
+        right: -30px;
+        bottom: -30px;
+    }
+    
+    .letter-scroll {
+        padding: 1rem;
+        max-height: 300px;
+    }
+    
+    .letter-text p {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+    
+    .back-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Performance for Ishwa</title>
+    <link rel="stylesheet" href="CSS/performance.css">
+</head>
+<body>
+    <div class="performance-container">
+        <header>
+            <h1>Love Performance</h1>
+        </header>
+        
+        <div class="performance-content">
+            <!-- First Video Container -->
+            <div class="video-container" id="video-container-1">
+                <video id="love-video-1" controls>
+                    <source src="your-first-video.mp4" type="video/mp4">
+                    <p>Your browser does not support the video tag. Please use a modern browser to view this content.</p>
+                </video>
+                
+                <div class="video-overlay" id="video-overlay-1">
+                    <div class="play-button" onclick="playVideo(1)">
+                        <span>▶</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Second Video Container (Initially Hidden) -->
+            <div class="video-container hidden" id="video-container-2">
+                <video id="love-video-2" controls>
+                    <source src="assert/love song 2.mp4" type="video/mp4">
+                    <p>Your browser does not support the video tag. Please use a modern browser to view this content.</p>
+                </video>
+                
+                <div class="video-overlay" id="video-overlay-2">
+                    <div class="play-button" onclick="playVideo(2)">
+                        <span>▶</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Love Message (Shows after both videos) -->
+            <div id="love-message" class="love-message hidden">
+                <div class="main-message">
+                    <h2>I love you, my jaan</h2>
+                    <h3>(my controller baby)</h3>
+                </div>
+                <div class="message-decoration">💕💖💕</div>
+            </div>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="loading-indicator">
+                <div class="heart-loader">
+                    <div class="heart"></div>
+                    <div class="heart"></div>
+                    <div class="heart"></div>
+                </div>
+                <p>Loading your special performance...</p>
+            </div>
+            
+            <!-- Video Progress Indicator -->
+            <div id="video-progress" class="video-progress hidden">
+                <span class="progress-text">Video <span id="current-video-num">1</span> of 2</span>
+                <div class="progress-dots">
+                    <span class="dot active" id="dot-1"></span>
+                    <span class="dot" id="dot-2"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="JS/performance.js"></script>
+</body>
+</html>
